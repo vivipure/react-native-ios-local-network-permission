@@ -11,11 +11,13 @@ npm install react-native-ios-local-network-permission
 ## Usage
 
 ```js
-import { multiply } from 'react-native-ios-local-network-permission';
+import { checkIOSLocalNetworkPermission,  requestIOSLocalNetworkPermission} from 'react-native-ios-local-network-permission';
 
-// ...
+// check permission
+const result = await checkIOSLocalNetworkPermission(); // true or false
 
-const result = await multiply(3, 7);
+// request permission
+const isGranted = await requestIOSLocalNetworkPermission() // true or false
 ```
 
 ## Contributing

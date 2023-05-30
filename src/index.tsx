@@ -17,6 +17,23 @@ const IosLocalNetworkPermission = NativeModules.IosLocalNetworkPermission
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return IosLocalNetworkPermission.multiply(a, b);
+
+/**
+ * 
+ * check ios local network permission
+ * */ 
+export function checkIOSLocalNetworkPermission(): Promise<boolean> {
+  if(Platform.OS === 'ios') {
+    return  IosLocalNetworkPermission.check().then((res: string) => res === 'true')
+  }
+  return Promise.resolve(true)   
 }
+
+/**
+ * 
+ * request ios local network permission
+ * */ 
+export function requestIOSLocalNetworkPermission() {
+  return checkIOSLocalNetworkPermission()
+}
+
